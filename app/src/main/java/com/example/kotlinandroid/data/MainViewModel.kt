@@ -1,4 +1,4 @@
-package com.example.kotlinandroid.ui.main
+package com.example.kotlinandroid.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel(
-    private val dataSource: DataSource
+    private val dataSource: DataSourceM
 ) : ViewModel() {
 
 
@@ -27,9 +27,9 @@ class MainViewModel(
     /**
      * Factory for [LiveDataViewModel].
      */
-    object LiveDataVMFactory : ViewModelProvider.Factory {
+    object MainDataVMFactory : ViewModelProvider.Factory {
 
-        private val dataSource = LiveDataSource(Dispatchers.IO)
+        private val dataSource = MainDataSource(Dispatchers.IO)
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")

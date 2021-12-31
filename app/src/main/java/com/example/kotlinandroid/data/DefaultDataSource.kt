@@ -1,4 +1,19 @@
-package com.example.kotlinandroid.ui.main
+/*
+ * Copyright (C) 2019 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.example.kotlinandroid.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,8 +23,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-class LiveDataSource(private val ioDispatcher: CoroutineDispatcher) : DataSource {
 
+/**
+ * A source of data for [LiveDataViewModel], showcasing different LiveData + coroutines patterns.
+ */
+class DefaultDataSource(private val ioDispatcher: CoroutineDispatcher) : DataSource {
+
+    /**
+     * LiveData builder generating a value that will be transformed.
+     */
+    override fun getCurrentTime(): LiveData<Long> =
+        liveData {
+            while (true) {
+                emit(System.currentTimeMillis())
+                delay(1000)
+            }
+        }
 
     /**
      * emit + emitSource pattern (see ViewModel).
@@ -22,7 +51,7 @@ class LiveDataSource(private val ioDispatcher: CoroutineDispatcher) : DataSource
         var counter = 0
         while (true) {
             counter++
-            delay(5000)
+            delay(2000)
 
             emit(weatherConditions[counter % weatherConditions.size])
         }
@@ -53,11 +82,10 @@ class LiveDataSource(private val ioDispatcher: CoroutineDispatcher) : DataSource
         counter++
         "New data from request #$counter"
     }
-
 }
 
-
 interface DataSource {
+    fun getCurrentTime(): LiveData<Long>
     fun fetchWeather(): LiveData<String>
     val cachedData: LiveData<String>
     suspend fun fetchNewData()
