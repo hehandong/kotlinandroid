@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.kotlinandroid.ui.main
+package com.example.kotlinandroid.google
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.kotlinandroid.R
-import com.example.kotlinandroid.data.LiveDataVMFactory
-import com.example.kotlinandroid.data.LiveDataViewModel
 import com.example.kotlinandroid.databinding.ActivityLivedataBinding
 
 class LiveDataActivity : AppCompatActivity() {

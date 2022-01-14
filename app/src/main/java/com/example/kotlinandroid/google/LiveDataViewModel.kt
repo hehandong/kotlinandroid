@@ -13,20 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.kotlinandroid.data
+package com.example.kotlinandroid.google
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
-import com.example.kotlinandroid.data.DataSource
-import com.example.kotlinandroid.data.DefaultDataSource
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Date
+import java.util.*
 
 /**
  * Showcases different patterns using the liveData coroutines builder.

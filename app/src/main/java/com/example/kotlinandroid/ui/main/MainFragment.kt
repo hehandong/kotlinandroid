@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.kotlinandroid.data.MainViewModel
 import com.example.kotlinandroid.databinding.MainFragmentBinding
+import com.example.kotlinandroid.google.LiveDataActivity
 
 class MainFragment : Fragment() {
 
@@ -35,7 +36,7 @@ class MainFragment : Fragment() {
         })
 
         binding.btnTest.setOnClickListener {
-            val intent = Intent(context,LiveDataActivity::class.java)
+            val intent = Intent(context, LiveDataActivity::class.java)
             startActivity(intent)
         }
 

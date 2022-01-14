@@ -21,7 +21,7 @@
 
         <variable
             name="viewmodel"
-            type="com.example.kotlinandroid.data.LiveDataViewModel" />
+            type="com.example.kotlinandroid.google.LiveDataViewModel" />
     </data>
 
     <LinearLayout
